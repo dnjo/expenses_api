@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_10_30_160722) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
   create_table "time_periods", force: :cascade do |t|
@@ -52,5 +54,6 @@ ActiveRecord::Schema.define(version: 2021_10_30_160722) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "expenses", "users"
   add_foreign_key "time_periods", "users"
 end
