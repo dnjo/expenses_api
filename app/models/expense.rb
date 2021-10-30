@@ -1,5 +1,4 @@
 class Expense < ApplicationRecord
-  has_many :expense_statuses
-  has_many :time_periods, through: :expense_statuses
+  has_many :expense_statuses, dependent: :delete_all
   belongs_to :user
 end

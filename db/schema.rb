@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2021_10_30_160722) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "expense_statuses", "expenses"
+  add_foreign_key "expense_statuses", "time_periods"
   add_foreign_key "expenses", "users"
   add_foreign_key "time_periods", "users"
 end
