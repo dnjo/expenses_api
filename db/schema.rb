@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_30_151349) do
+ActiveRecord::Schema.define(version: 2021_10_30_160722) do
 
   create_table "expense_statuses", force: :cascade do |t|
     t.integer "expense_id"
@@ -35,6 +35,22 @@ ActiveRecord::Schema.define(version: 2021_10_30_151349) do
     t.integer "month"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_time_periods_on_user_id"
   end
 
+  create_table "user_authentications", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "identifier"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_authentications_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "time_periods", "users"
 end
