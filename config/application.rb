@@ -36,5 +36,12 @@ module ExpensesApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.logger = Logger.new $stdout
+    config.log_level = :info
+
+    encoded_key = Rails.application.credentials.security[:jwt_signing_key]
+    decoded_json_key = Base64.decode64 encoded_key
+    config.jwt_signing_key = JSON.parse decoded_json_key
   end
 end

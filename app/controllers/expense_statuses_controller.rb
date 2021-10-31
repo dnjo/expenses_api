@@ -1,4 +1,6 @@
 class ExpenseStatusesController < ApplicationController
+  before_action :require_login
+
   def index
     render json: period.expense_statuses
   end

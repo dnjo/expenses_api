@@ -1,4 +1,6 @@
 class ExpensesController < ApplicationController
+  before_action :require_login
+
   def index
     render json: current_user.expenses
   end

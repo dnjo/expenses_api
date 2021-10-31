@@ -1,4 +1,6 @@
 class TimePeriodsController < ApplicationController
+  before_action :require_login
+
   def index
     render json: current_user.time_periods
   end

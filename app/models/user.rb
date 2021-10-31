@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :expense_statuses, through: :time_periods
   has_many :expenses
 
-  def self.create_from_subject(subject)
+  def self.from_subject(subject)
     authentication = UserAuthentication.find_or_create_by(identifier: subject)
     return authentication.user if authentication.user
 
