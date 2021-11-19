@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :time_periods, except: %i[new edit] do
     resources :expense_statuses, except: %i[new edit]
+
+    put '/expense_statuses/:id/toggle_paid', to: 'expense_statuses#toggle_paid'
   end
 
   resources :expenses, except: %i[new edit]

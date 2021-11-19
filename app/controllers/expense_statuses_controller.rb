@@ -30,6 +30,12 @@ class ExpenseStatusesController < ApplicationController
     render json: status
   end
 
+  def toggle_paid
+    status = current_user.expense_statuses.find params[:id]
+    status.update paid: !status.paid
+    render json: status
+  end
+
   def destroy
     status = current_user.expense_statuses.find params[:id]
     status.destroy
