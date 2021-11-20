@@ -43,5 +43,7 @@ module ExpensesApi
     encoded_key = Rails.application.credentials.security[:jwt_signing_key]
     decoded_json_key = Base64.decode64 encoded_key
     config.jwt_signing_key = JSON.parse decoded_json_key
+
+    config.cors_origin = ENV['EXPENSES_API_CORS_ORIGIN']
   end
 end
