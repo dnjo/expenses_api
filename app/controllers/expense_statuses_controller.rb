@@ -12,7 +12,8 @@ class ExpenseStatusesController < ApplicationController
                                   time_period: period,
                                   amount: params[:amount],
                                   paid: false
-    render json: status
+    status_json = status.to_json include: :expense
+    render json: status_json
   end
 
   def show
