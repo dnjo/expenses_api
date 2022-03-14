@@ -2,7 +2,7 @@ class ExpenseStatusesController < ApplicationController
   before_action :require_login
 
   def index
-    statuses = period.expense_statuses.to_json include: :expense
+    statuses = period.expense_statuses.sort_by { |s| s.expense.title }.to_json include: :expense
     render json: statuses
   end
 

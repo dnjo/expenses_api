@@ -2,7 +2,7 @@ class ExpensesController < ApplicationController
   before_action :require_login
 
   def index
-    render json: current_user.expenses
+    render json: current_user.expenses.sort_by { |e| e.title }
   end
 
   def create
